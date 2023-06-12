@@ -1,0 +1,5 @@
+package com.newDev.Employee.Repository;
+
+public interface EmployeeRepository {
+
+}

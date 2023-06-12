@@ -1,0 +1,13 @@
+package com.newDev.Employee.Services;
+
+import java.util.List;
+
+import com.newDev.Employee.Model.Employee;
+
+public interface employeeService {
+
+	Employee createEmployee(Employee emp);
+
+	List<Employee> getEmployees();
+
+}

@@ -1,0 +1,14 @@
+package com.newDev.Employee.Controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.newDev.Employee.Services.employeeService;
+
+@RestController
+@RequestMapping("/api/v1/")
+public class employeeController {
+
+	private final employeeService empServ;
+}

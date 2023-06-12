@@ -1,0 +1,58 @@
+package com.newDev.Employee.Services;
+
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Service;
+
+import com.newDev.Employee.Entity.EmployeeEntity;
+import com.newDev.Employee.Model.Employee;
+import com.newDev.Employee.Repository.EmployeeRepository;
+
+@Service
+public class employeeServiceImpl implements employeeService {
+
+	
+	private EmployeeRepository empRepo;
+	
+	
+	public employeeServiceImpl(EmployeeRepository empRepo) {
+		this.empRepo = empRepo;
+	}
+
+
+	@Override
+	public Employee createEmployee(Employee emp) {
+		EmployeeEntity employeeEntity =new EmployeeEntity();
+		BeanUtils.copyProperties(emp, employeeEntity);
+		empRepo.save(employeeEntity);
+		return emp;
+	}
+
+
+	@Override
+	public List<Employee> getEmployees() {
+		
+		List<EmployeeEntity> employeeEntities =empRepo.findAll();
+		
+		List<Employee> employees =employeeEntities
+									.stream()
+									.map(emp->new Employee(emp.getId(),
+														   emp.getFirstName(),emp.getLastName(),emp.getEmailId()))
+									.collect(Collectors.toList());
+		
+		return employees ;
+	}
+
+
+	@Override
+	public boolean deleteEmployeeByID(Long id) {
+
+		EmployeeEntity employee =empRepo.findById(id).get();
+		empRepo.delete(employee);
+		return true;
+	}
+
+}

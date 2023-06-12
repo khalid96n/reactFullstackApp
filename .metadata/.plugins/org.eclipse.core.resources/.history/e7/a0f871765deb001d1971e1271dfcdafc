@@ -1,0 +1,26 @@
+package com.newDev.Employee.Services;
+
+import org.springframework.stereotype.Service;
+
+import com.newDev.Employee.Model.Employee;
+import com.newDev.Employee.Repository.EmployeeRepository;
+
+@Service
+public class employeeServiceImpl implements employeeService {
+
+	
+	private EmployeeRepository empRepo;
+	
+	
+	public employeeServiceImpl(EmployeeRepository empRepo) {
+		this.empRepo = empRepo;
+	}
+
+
+	@Override
+	public Employee createEmployee(Employee emp) {
+		// TODO Auto-generated method stub
+		return empRepo.save(emp);
+	}
+
+}

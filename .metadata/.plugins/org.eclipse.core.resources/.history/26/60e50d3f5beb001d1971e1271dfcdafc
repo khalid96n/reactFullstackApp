@@ -1,0 +1,12 @@
+package com.newDev.Employee.Model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.Data;
+
+@Entity
+@Data
+@Table(name="employees")
+public class Employee {
+
+}
